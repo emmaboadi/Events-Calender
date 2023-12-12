@@ -1,4 +1,4 @@
-
+// JavaScript function that wraps everything
 $(document).ready(function () {
     // Display current day
     $("#currentDay").text(dayjs().format("dddd, MMMM D, YYYY"));
@@ -7,7 +7,7 @@ $(document).ready(function () {
     for (let i = 9; i <= 17; i++) {
       let timeblockDiv = $("<div>").addClass("time-block");
       let textarea = $("<textarea>").attr("id", `hour-${i}`);
-      let saveBtn = $("<button>").addClass("saveBtn").text("Save");
+      let saveBtn = $("<i>").attr("class", 'fa-solid fa-floppy-disk');
   
       timeblockDiv.append(`<p>${i}:00</p>`);
       timeblockDiv.append(textarea);
