@@ -1,35 +1,44 @@
-var DateElement = $('#currentDay');
 
-var today = dayjs().format('dddd DD[,] MMMM YYYY');
+setInterval(dateTime,1000);
+// function to display current date and time 
+function dateTime() {
+var DateElement = $('#currentDay');
+var today = dayjs().format('dddd DD[,] MMMM YYYY [at] hh:mm:ss a');
 DateElement.text(today);
+
+}
+
+
 
 // creating timeblocks for standard business hours
 for (let i = 9; i <= 17; i++) {
-  let rowEL = $('<div class="row">');
+  let timeblockEl = $('<div class="row">');
 
-  let timeblockEl = $('<div class="col-sm-12 col-lg-12 time-block">');
-  timeblockEl.append(`<p>${i}:00</p>`);
+// creating 3 bootstrap columns
+  let hourDiv = $('<div class="col">');
+  let textareaDiv = $('<div class="col-8">');
+  let buttonDiv = $('<div class="col">');
+
+
+// appending hours to timeblock
+  hourDiv.append(`<p class ="hour">${i}:00</p>`);
+  timeblockEl.append(hourDiv);
+
+//appending text-area to timeblock
   let textArea = $('<textarea>');
-  //let textarea = $("<textarea>").attr("id", `hour-${i}`);
+  textareaDiv.append(textArea)
+  timeblockEl.append(textareaDiv);
 
-  
-
-  
-  //timeblockDiv.append(`<i class="fa-solid fa-floppy-disk"></i>`);
-
-  
-  
-  timeblockEl.append(textArea);
+  //appending save button to timeblock
 
   let saveBtn = $('<button class = "saveBtn"></button');
-
   saveBtn.append('<i class="material-icons"> save </i>');
+  buttonDiv.append(saveBtn)
+  timeblockEl.append(buttonDiv);
 
-  timeblockEl.append(saveBtn)
-
-  rowEL.append(timeblockEl);
-
-  $(".container").append(rowEL);
+  
+//appending timeblocks to container elements
+  $(".container").append(timeblockEl);
 
   // Colour code of timeblocks
   let currentHour = dayjs().hour();
@@ -54,3 +63,4 @@ for (let i = 9; i <= 17; i++) {
   
 
 }
+
