@@ -5,9 +5,9 @@ $(document).ready(function () {
   
     // Create timeblocks
     for (let i = 9; i <= 17; i++) {
-      let timeblockDiv = $("<div>").addClass("time-block");
+      let timeblockDiv = $("<div>").addClass("timeblock");
       let textarea = $("<textarea>").attr("id", `hour-${i}`);
-      let saveBtn = $("<i>").attr("class", 'fa-solid fa-floppy-disk');
+      let saveBtn = $("<button>").addClass("save-btn").text("Save");
   
       timeblockDiv.append(`<p>${i}:00</p>`);
       timeblockDiv.append(textarea);
